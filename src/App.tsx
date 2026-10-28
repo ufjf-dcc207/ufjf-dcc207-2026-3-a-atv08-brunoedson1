@@ -9,6 +9,13 @@ const data:Array<PacoteType> = [
     altura: 30,
     profundidade: 40,
     peso: 2.34 
+  },
+  {
+    id:"c6eaa93f-9477-481f-a9a2-8ac29f13597f",
+    largura: 40,
+    altura: 20,
+    profundidade: 10,
+    peso: 3.14 
   }
 
 ]
@@ -19,7 +26,7 @@ function App() {
     <>
       <h2>Pacotes</h2>
       <div className='pacotes'>
-        <Pacote pacote={data[0]}/>
+        {data.map((p) => <Pacote pacote={p} key={p.id} />)}
       </div>
     </>
   )
