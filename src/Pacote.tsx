@@ -1,18 +1,24 @@
 import "./Pacote.css"
+import type { PacoteType } from "./types";
 
-export default function Pacote() {
+type PacoteProps = {
+    pacote: PacoteType;
+}
+
+
+export default function Pacote({pacote}: PacoteProps) {
     return (
         <div className='pacote'>
-            <div>id</div>
-            <div>12312987398127</div>
-            <div>Largura (cm)</div>
-            <div>20</div>
-            <div>ALtura</div>
-            <div>30</div>
-            <div>Profundidade</div>
-            <div>40</div>
-            <div>Peso (kg)</div>
-            <div>2.34</div>
+            <dt>id</dt>
+            <dd title={pacote.id}>{pacote.id.substring(0,8)}</dd>
+            <dt>Largura (cm)</dt>
+            <dd>{pacote.largura}</dd>
+            <dt>Altura</dt>
+            <dd>{pacote.altura}</dd>
+            <dt>Profundidade</dt>
+            <dd>{pacote.profundidade}</dd>
+            <dt>Peso (kg)</dt>
+            <dd>{pacote.peso}</dd>
         </div>
     )
 }
