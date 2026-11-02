@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Pacote from './Pacote.tsx'
 import type { PacoteType } from './types.ts'
@@ -21,12 +22,13 @@ const data:Array<PacoteType> = [
 ]
 
 function App() {
+  const [pacotes, setPacotes] = useState(data);
 
   return (
     <>
       <h2>Pacotes</h2>
       <div className='pacotes'>
-        {data.map((p) => <Pacote pacote={p} key={p.id} />)}
+        {pacotes.map((p) => <Pacote pacote={p} key={p.id} />)}
       </div>
     </>
   )
