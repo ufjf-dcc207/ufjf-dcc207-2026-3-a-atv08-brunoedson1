@@ -24,11 +24,26 @@ const data:Array<PacoteType> = [
 function App() {
   const [pacotes, setPacotes] = useState(data);
 
+  function excluirPacote(pacote) {
+    const novoPacotes = [];
+    for (let i = 0; i < pacotes.length; i++) {
+      if(pacotes[i] != pacote) {
+        novoPacotes.push(pacotes[i]);
+      }
+    }
+
+    setPacotes(novoPacotes);
+  }
+
   return (
     <>
       <h2>Pacotes</h2>
       <div className='pacotes'>
-        {pacotes.map((p) => <Pacote pacote={p} key={p.id} />)}
+        {pacotes.map((p) => (
+          <div key={p.id}>
+            <Pacote pacote={p}  />
+            <button onClick={() => excluirPacote(p)}>Excluir</button>
+          </div>))}
       </div>
     </>
   )
