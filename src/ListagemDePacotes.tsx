@@ -2,11 +2,11 @@ import { useState } from "react";
 import "./ListagemDePacotes.css";
 import Pacote from "./Pacote";
 import type { PacoteType } from "./types";
-import type { AcaoPacoteExcluir } from "./pacoteReducers";
+import type { AcaoPacote } from "./pacoteReducers";
 
 type ListagemDePacotesProps = {
     pacotes: Array<PacoteType>;
-    dispacher: React.ActionDispatch<[action: AcaoPacoteExcluir]>;
+    dispacher: React.ActionDispatch<[action: AcaoPacote]>;
 }
 export default function ListagemDePacotes({ pacotes, dispacher }: ListagemDePacotesProps) {
     const [ordenacao, setOrdenacao] = useState("peso");
