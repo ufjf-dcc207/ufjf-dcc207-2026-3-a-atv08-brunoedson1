@@ -19,16 +19,20 @@ export default function pacoteReducer(state: Array<PacoteType>, action: AcaoPaco
         case "excluir":
             return state.filter(p => p.id !== action.id);
         case "repetir":
-            if (action.dimensao === "altura") {
-                return state.map(p => {
-                    if (p.id === action.id) {
-                        return { ...p, profundidade: p.altura, largura: p.altura }
-                    } else return p
-                }
-                );
-            }
-            break;
-        default:
+            return acaoRepetir(state, action);
+         default:
             return state;
+    }
+
+}
+
+function acaoRepetir(state: Array<PacoteType>, action: AcaoPacoteRepetir) {
+    if (action.dimensao === "altura") {
+        return state.map(p => {
+            if (p.id === action.id) {
+                return { ...p, profundidade: p.altura, largura: p.altura }
+            } else return p
+        }
+        );
     }
 }
