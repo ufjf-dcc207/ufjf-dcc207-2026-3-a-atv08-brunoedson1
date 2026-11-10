@@ -1,6 +1,6 @@
 import "./Pacote.css"
 import type { PacoteType } from "./types";
-import type { AcaoPacote } from "./pacoteReducers";
+import type { AcaoPacote } from "./pacoteReducer";
 
 type PacoteProps = {
     pacote: PacoteType;
