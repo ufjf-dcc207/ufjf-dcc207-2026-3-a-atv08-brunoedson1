@@ -1,20 +1,17 @@
 import { useContext, useState } from "react";
 import "./ListagemDePacotes.css";
 import Pacote from "./Pacote";
-import type { PacoteType } from "./types";
-import type { AcaoPacote } from "./pacoteReducer";
 import { PacotesContext } from "./PacoteContext";
 
-type ListagemDePacotesProps = {
-    dispacher: React.ActionDispatch<[action: AcaoPacote]>;
-}
-
-export default function ListagemDePacotes({dispacher}: ListagemDePacotesProps) {
+export default function ListagemDePacotes() {
     const pacotes = useContext(PacotesContext);
-    const [ordenacao, setOrdenacao] = useState("peso");
+    type OrdernacaoKey = "peso" | "altura" | "largura" | "profundidade";
+    const [ordenacao, setOrdenacao] = useState<OrdernacaoKey>("peso");
+    
     function mudaOrdenacao(evento: React.ChangeEvent<HTMLSelectElement>) {
-        setOrdenacao(evento.target.value);
+        setOrdenacao(evento.target.value as OrdernacaoKey);
     }
+
     return (
         <div>
             <div>Ordenar por: {ordenacao}
@@ -29,7 +26,7 @@ export default function ListagemDePacotes({dispacher}: ListagemDePacotesProps) {
                 {pacotes
                     .sort((x, y) => y[ordenacao] - x[ordenacao])
                     .map(p => (
-                        <Pacote pacote={p} key={p.id} dispacher={dispacher} />
+                        <Pacote pacote={p} key={p.id} />
                     ))}
             </dl>
         </div>

@@ -43,6 +43,7 @@ function acaoRepetir(state: Array<PacoteType>, action: AcaoPacoteRepetir) {
         }
         );
     }
+    return state;
 }
 
 function acaoPeso(state: Array<PacoteType>, action: AcaoPacotePeso) {
