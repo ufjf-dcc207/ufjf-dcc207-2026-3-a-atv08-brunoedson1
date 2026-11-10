@@ -1,11 +1,29 @@
 .pacote {
     display: grid;
     gap: 2px;
-    grid-template-columns: 2fr 1fr;
     border: 1px solid black;
-    width: 350px;
-    padding: 4px;
-    dt {
-        font-weight: border;
-    }
+    padding: 10px;
+}
+
+.campo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2px;
+}
+
+.campo dt {
+    font-weight: bold;
+}
+
+.campo dd {
+    margin: 2px;
+}
+
+.destaque {
+    background: rgba(170, 59, 255, 0.15);
+    border-radius: 4px;
+}
+
+.acoes button {
+    margin: 4px;
 }

@@ -5,3 +5,5 @@ export type PacoteType = {
   profundidade: number,
   peso: number
 }
+
+export type OrdernacaoKey = "peso" | "altura" | "largura" | "profundidade";

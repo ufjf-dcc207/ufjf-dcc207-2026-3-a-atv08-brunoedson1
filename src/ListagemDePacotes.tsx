@@ -2,20 +2,26 @@ import { useContext, useState } from "react";
 import "./ListagemDePacotes.css";
 import Pacote from "./Pacote";
 import { PacotesContext } from "./PacoteContext";
+import type { OrdernacaoKey } from "./types";
 
 export default function ListagemDePacotes() {
     const pacotes = useContext(PacotesContext);
-    type OrdernacaoKey = "peso" | "altura" | "largura" | "profundidade";
     const [ordenacao, setOrdenacao] = useState<OrdernacaoKey>("peso");
-    
+
     function mudaOrdenacao(evento: React.ChangeEvent<HTMLSelectElement>) {
         setOrdenacao(evento.target.value as OrdernacaoKey);
     }
 
+    const pacotesOrdenados = [...pacotes].sort((x, y) => {
+        const diff = y[ordenacao] - x[ordenacao];
+        if (diff !== 0) return diff;
+        return x.id.localeCompare(y.id);
+    });
+
     return (
         <div>
-            <div>Ordenar por: {ordenacao}
-                <select onChange={mudaOrdenacao}>
+            <div>Ordenar por:
+                <select value={ordenacao} onChange={mudaOrdenacao}>
                     <option value="peso">peso</option>
                     <option value="altura">altura</option>
                     <option value="largura">largura</option>
@@ -23,12 +29,10 @@ export default function ListagemDePacotes() {
                 </select>
             </div>
             <dl>
-                {pacotes
-                    .sort((x, y) => y[ordenacao] - x[ordenacao])
-                    .map(p => (
-                        <Pacote pacote={p} key={p.id} />
-                    ))}
+                {pacotesOrdenados.map(p => (
+                    <Pacote pacote={p} ordenacao={ordenacao} key={p.id} />
+                ))}
             </dl>
         </div>
-    )
+    );
 }

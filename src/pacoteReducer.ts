@@ -20,18 +20,16 @@ export type AcaoPacotePeso = {
 }
 
 export default function pacoteReducer(state: Array<PacoteType>, action: AcaoPacote): Array<PacoteType> {
-    console.log(action);
-        switch (action.type) {
+    switch (action.type) {
         case "excluir":
             return state.filter(p => p.id !== action.id);
         case "repetir":
             return acaoRepetir(state, action);
         case "peso":
             return acaoPeso(state, action);
-         default:
+        default:
             return state;
     }
-
 }
 
 function acaoRepetir(state: Array<PacoteType>, action: AcaoPacoteRepetir) {
