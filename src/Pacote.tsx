@@ -26,6 +26,8 @@ export default function Pacote({pacote, dispacher}: PacoteProps) {
             <dd>
                 <button onClick={() => dispacher({ type: "excluir", id:pacote.id })}>Excluir</button>
                 <button onClick={() => dispacher({type: "repetir", id:pacote.id, dimensao:"altura"})}>Repetir Altgura</button>
+                <button onClick={() => dispacher({type: "peso", id:pacote.id, valor:1.0})}>+Peso</button>
+                <button onClick={() => dispacher({type: "peso", id:pacote.id, valor:-1.0})}>-Peso</button>
             </dd>
         </div>
     )
